@@ -1,43 +1,51 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const APIURL = 'https://api.github.com/users/';
 
+function App() {
+  const [username, setUsername] = useState('margamb')
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+
+    async function fetchUser() {
+      const res = await fetch(APIURL + username)
+      const data = await res.json()
+      setUser(data)
+    }
+    if(username !== '') { // why?
+      fetchUser()
+    }
+
+    
+  }, [username])
+
+  function handleUser(ev) {
+    ev.preventDefault()
+    setUsername(ev.target.user.value)
+  }
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <form onSubmit={handleUser}>
+        <input type="text" placeholder="search a Github user" name="user" />
+        <input type="submit" value="submit" />
+      </form>
+      <p>{user.name}</p>
+
+      <div className="profile">
+        <img className="avatar_url" src={user.avatar_url} />
+
+        <h2 className="name">{user.name}</h2>
+        <p className="bio">{user.bio}</p>
+
+        <ul>
+          <li>{user.followers}</li>
+          <li>{user.following}</li>
+          <li>{user.public_repos}</li>
+        </ul>
+      </div>
     </div>
   )
 }
