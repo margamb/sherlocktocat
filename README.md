@@ -1,4 +1,4 @@
-# Sherlocktocat App
+# Sherlocktocat App ⚛️ 
 
 A Sherlocktocar app I create to improve my react and javascript. I wonted to learn about fetch and I choosed the API of github and I enjoyed doing a reusable component with its own illustrations.
 
@@ -31,7 +31,7 @@ The Sherlocktocat ilustration was created using a pencil 👩🏻‍🎨 and ink
 ![pencil](./README_img/sherlocktocat_pencil.jpg)
 
 
-### Color 
+### Color 🌈 
 
 I always start designing in black and white. It's the best option to get a sense of balance and rhythm in a design. Then I make a color palette depending on the target.
 
