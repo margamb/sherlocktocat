@@ -18,7 +18,7 @@ const initProfile = {
 const notFound = {
   name: 'Sherlock404',
   avatar_url: sherlocktocat_notFound,
-  bio: "Oups, github profile not found!!!",
+  bio: "Oops, github profile not found!!!",
   followers: 0,
   following: 0,
   public_repos: 0
